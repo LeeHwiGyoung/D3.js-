@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+    <svg width="1000" height="1000"></svg>
+    <script>
+      const sampleData = [];
+      for (var i = 0; i < 1000; i++) {
+        sampleData.push({
+          cx: Math.random() * 1000,
+          cy: Math.random() * 1000,
+          r: Math.random() * 10,
+          //hsl은 색조(hue, 0 ~ 359), 포화(saturation), 밝기(lightness)
+          color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+        });
+      }
+
+      const svg = d3.select("svg");
+      svg
+        .selectAll("circle")
+        .data(sampleData)
+        .enter() //enter데이터 수 > DOM 요소 , update(재적용 , 화면 갱신), exit (데이터수 < dom요소);
+        .append("circle")
+        .attr("cx", (d) => d.cx)
+        .attr("cy", (d) => d.cy)
+        .attr("r", (d) => d.r)
+        .attr("fill", (d) => d.color)
+        .update();
+    </script>
+  </body>
+</html>
