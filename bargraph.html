@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+    <svg width="500" height="500"></svg>
+    <script>
+      const sampleData = [100, 10, 30, 50, 10, 70, 200, 90];
+      const svg = d3.select("svg");
+      const barWidth = 30;
+      const xGap = 40;
+      const yHeight = 300;
+      sampleData.forEach((data, index) => {
+        svg
+          .append("rect")
+          .attr("height", data)
+          .attr("width", barWidth)
+          .attr("x", xGap * index)
+          .attr("y", yHeight - data);
+
+        svg
+          .append("text")
+          .attr("x", xGap * index)
+          .attr("y", yHeight - data - 10)
+          .text(data)
+          .style("font-size", "0.85em")
+          .style("color", "#222");
+      });
+    </script>
+  </body>
+</html>
