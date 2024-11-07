@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+    <script>
+      //range 는 전체 width
+      //domain의 전체 count를 range값으로 '동일하게 ' 분할하여 분배
+      const f1 = d3.scaleLinear().range([0, 100]).domain([0, 500]); //y좌표
+
+      const f2 = d3
+        .scaleLinear()
+        .range(["orange", "white", "green"])
+        .domain([-1, 0, 1]); //y좌표
+      //숫자가 아니어도 가능하다
+
+      const f3 = d3
+        .scaleLinear()
+        .range([200, 500])
+        .domain([20000000, 50000000]); //인구수를 200~500으로 정규화
+    </script>
+  </body>
+</html>
